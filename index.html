@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" href="./css/index.css" />
+	</head>
+	<body>
+
+		<!-- "value" must be defined before validation function -->
+		<input type="text" placeholder="word" data-bind="value: word, requiredValidation: { groups: ['fooGroup'], message: 'word should be required' }, regexValidation: { groups: ['fooGroup'], regex: '[A-za-z]+', message: 'word should be alphabetic' }"/>
+		<input type="text" placeholder="number" data-bind="value: number, requiredValidation: { groups: ['fooGroup'] }, regexValidation: { groups: ['fooGroup'], regex: '[0-9]+' }"/>
+
+		<input type="text" placeholder="or 1" data-bind="value: orField1, orRequiredValidation: { groups: [ 'fooGroup', 'barGroup'], orGroup: 'someOrGroup'}" />
+		<input type="text" placeholder="or 2" data-bind="value: orField2, orRequiredValidation: { groups: [ 'fooGroup', 'barGroup'], orGroup: 'someOrGroup'}" />
+
+		<!-- "click" must be defined before "validate" -->
+		<button type="button" data-bind="click: fooClicked, validate: [ 'fooGroup' ] ">Foo</button>
+		<button type="button" data-bind="click: barClicked, validate: [ 'barGroup' ]">Bar(with or validation)</button>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js"></script>
+		<script src="./js/customBindings.js"></script>
+		<script src="./js/index.js"></script>
+	</body>
+</html>	
